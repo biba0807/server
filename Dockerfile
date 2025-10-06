@@ -1,11 +1,12 @@
-# Используем официальный образ с Java 17 (Spigot 1.20.1 требует как минимум Java 17)
 FROM eclipse-temurin:17-jdk
 
-# Устанавливаем рабочую директорию
+# Исходники приложения находятся в /code
 WORKDIR /data
 
-# Копируем всё из текущей директории в /data
-COPY . /data
+# Копируем jar из /code в /data
+COPY /code/spigot-1.20.1.jar /data/
+COPY /code/world /data/
+
 
 # Открываем порт Minecraft
 EXPOSE 25565
@@ -14,4 +15,4 @@ EXPOSE 25565
 ENV MEMORY=2G
 
 # Команда запуска
-CMD ["sh", "-c", "java -Xms${MEMORY} -Xmx${MEMORY} -jar spigot.jar nogui"]
+CMD ["sh", "-c", "java -Xms${MEMORY} -Xmx${MEMORY} -jar spigot-1.20.1.jar nogui"]
