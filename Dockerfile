@@ -2,16 +2,10 @@
 FROM eclipse-temurin:17-jdk
 
 # Устанавливаем рабочую директорию
-WORKDIR /server
+WORKDIR /data
 
-# Копируем серверный jar
-COPY spigot-1.20.1.jar /server/spigot.jar
-
-# Копируем eula.txt
-COPY eula.txt /server/eula.txt
-
-# Создаём директорию для мира и плагинов
-RUN mkdir -p /server/world /server/plugins
+# Копируем всё из текущей директории в /data
+COPY . /data
 
 # Открываем порт Minecraft
 EXPOSE 25565
