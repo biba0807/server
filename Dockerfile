@@ -4,8 +4,8 @@ FROM eclipse-temurin:17-jdk
 WORKDIR /data
 
 # Копируем jar из /code в /data
-COPY /code/spigot-1.20.1.jar /data/
-COPY /code/world /data/
+COPY /spigot-1.20.1.jar /data/
+COPY /world /data/
 
 
 # Открываем порт Minecraft
