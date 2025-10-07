@@ -1,17 +1,9 @@
-FROM eclipse-temurin:17-jdk
+FROM openjdk:17-jdk-slim
 
-# Рабочая директория для сервера
-WORKDIR /data
+WORKDIR /code
+COPY . .
 
-# Копируем из /code все нужное
-COPY /code/spigot-1.20.1.jar /data/
-COPY /code/world /data/
+EXPOSE 25565 27017
 
-# Открываем порт Minecraft
-EXPOSE 25565
 
-# Память
-ENV MEMORY=2G
-
-# Запуск сервера
-CMD ["sh", "-c", "java -Xms${MEMORY} -Xmx${MEMORY} -jar spigot-1.20.1.jar nogui"]
+CMD ["java", "-jar", "spigot-1.20.1.jar", "-nogui"]
